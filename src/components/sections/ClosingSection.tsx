@@ -2,7 +2,6 @@ import { useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { apps } from "@/data/apps";
-import { Footer } from "@/components/layout/Footer";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 export function ClosingSection() {
@@ -101,7 +100,6 @@ export function ClosingSection() {
           </a>
         </div>
 
-        <Footer />
       </div>
     </section>
   );

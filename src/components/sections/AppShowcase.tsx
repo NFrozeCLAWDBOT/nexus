@@ -174,32 +174,36 @@ export function AppShowcase({ app }: AppShowcaseProps) {
             <source src={`/${app.video}`} type="video/mp4" />
           </video>
 
-          {/* CTA overlay (visible in Phase 2) */}
+          {/* CTA widget — small glassmorphic pill, bottom-right */}
           <div
             ref={ctaRef}
-            className="absolute inset-0 flex flex-col items-center justify-center bg-obsidian/30"
+            className="absolute bottom-4 right-4 md:bottom-6 md:right-6"
             style={{ opacity: reducedMotion ? 1 : 0 }}
           >
             <a
               href={app.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col items-center gap-3 transition-transform hover:scale-105"
+              className="group flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 hover:scale-105"
+              style={{
+                background: "rgba(10, 10, 15, 0.5)",
+                backdropFilter: "blur(16px)",
+                WebkitBackdropFilter: "blur(16px)",
+                border: `1px solid rgba(192, 192, 200, 0.15)`,
+                boxShadow: `0 0 12px ${app.color.glow}`,
+              }}
             >
               <span
-                className="font-display text-4xl md:text-6xl tracking-wider"
-                style={{
-                  color: app.color.accent,
-                  textShadow: `0 0 20px ${app.color.glow}, 0 0 40px ${app.color.glow}`,
-                }}
-              >
-                {app.name.toUpperCase()}
-              </span>
-              <span
-                className="text-sm md:text-base tracking-widest uppercase"
+                className="text-xs md:text-sm tracking-widest uppercase"
                 style={{ color: app.color.accent }}
               >
-                Experience it &rarr;
+                Launch
+              </span>
+              <span
+                className="text-xs md:text-sm transition-transform duration-300 group-hover:translate-x-0.5"
+                style={{ color: app.color.accent }}
+              >
+                &rarr;
               </span>
             </a>
           </div>
