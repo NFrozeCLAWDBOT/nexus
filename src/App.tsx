@@ -6,6 +6,7 @@ import { HeroSection } from "@/components/sections/HeroSection";
 import { SystemSection } from "@/components/sections/SystemSection";
 import { AppShowcase } from "@/components/sections/AppShowcase";
 import { apps } from "@/data/apps";
+import { ClosingSection } from "@/components/sections/ClosingSection";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -22,10 +23,7 @@ function App() {
           <AppShowcase key={app.name} app={app} />
         ))}
 
-        {/* Placeholder for closing section */}
-        <div className="h-screen flex items-center justify-center">
-          <p className="text-gunmetal text-lg">Closing section coming...</p>
-        </div>
+        <ClosingSection />
       </ScrollContainer>
     </>
   );
