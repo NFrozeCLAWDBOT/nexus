@@ -33,6 +33,12 @@ html {
   color: var(--color-platinum);
 }
 
+/* Cross-section colour transition custom properties */
+:root {
+  --accent-color: #A8B2C1;
+  --glow-color: rgba(168, 178, 193, 0);
+}
+
 /* Glass utility */
 .glass {
   background: var(--color-glass-bg);
