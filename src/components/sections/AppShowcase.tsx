@@ -14,7 +14,6 @@ export function AppShowcase({ app }: AppShowcaseProps) {
   const descRef = useRef<HTMLParagraphElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const ctaRef = useRef<HTMLDivElement>(null);
   const reducedMotion = useReducedMotion();
 
   const playVideo = useCallback(() => {
@@ -38,8 +37,7 @@ export function AppShowcase({ app }: AppShowcaseProps) {
     const title = titleRef.current;
     const desc = descRef.current;
     const panel = panelRef.current;
-    const cta = ctaRef.current;
-    if (!section || !title || !desc || !panel || !cta) return;
+    if (!section || !title || !desc || !panel) return;
 
     // Calculate the scale needed to fill viewport from panel size
     // Panel is ~65% viewport width, so scale factor is ~1/0.65
@@ -107,12 +105,6 @@ export function AppShowcase({ app }: AppShowcaseProps) {
           ease: "none",
         },
         0.55,
-      )
-      .fromTo(
-        cta,
-        { opacity: 0 },
-        { opacity: 1, duration: 0.1, ease: "none" },
-        0.8,
       );
   }, [reducedMotion, playVideo, pauseVideo]);
 
@@ -173,40 +165,6 @@ export function AppShowcase({ app }: AppShowcaseProps) {
           >
             <source src={`/${app.video}`} type="video/mp4" />
           </video>
-
-          {/* CTA widget — small glassmorphic pill, bottom-right */}
-          <div
-            ref={ctaRef}
-            className="absolute bottom-4 right-4 md:bottom-6 md:right-6"
-            style={{ opacity: reducedMotion ? 1 : 0 }}
-          >
-            <a
-              href={app.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 hover:scale-105"
-              style={{
-                background: "rgba(10, 10, 15, 0.5)",
-                backdropFilter: "blur(16px)",
-                WebkitBackdropFilter: "blur(16px)",
-                border: `1px solid rgba(192, 192, 200, 0.15)`,
-                boxShadow: `0 0 12px ${app.color.glow}`,
-              }}
-            >
-              <span
-                className="text-xs md:text-sm tracking-widest uppercase"
-                style={{ color: app.color.accent }}
-              >
-                Launch
-              </span>
-              <span
-                className="text-xs md:text-sm transition-transform duration-300 group-hover:translate-x-0.5"
-                style={{ color: app.color.accent }}
-              >
-                &rarr;
-              </span>
-            </a>
-          </div>
         </div>
 
         {/* Description */}
